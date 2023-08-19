@@ -28,5 +28,5 @@ body {
 
 
 .number-button {
-  @apply h-16 w-16 flex flex-1 items-center justify-center border-2 border-solid border-white hover:bg-gray-500;
+  @apply h-16 w-16 flex flex-1 items-center justify-center border-2 border-solid border-white hover:bg-gray-500 text-2xl font-mono;
 }

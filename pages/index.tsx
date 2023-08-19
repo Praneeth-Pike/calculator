@@ -6,8 +6,15 @@ export default function Home() {
     const [display, setDisplay] = useState("0")
 
     const updateDisplay = (value: string) => {
-        if (display === "0") return setDisplay(value)
-        setDisplay(`${display}${value}`)
+        if (value === ".") {
+            setDisplay(`${display}${value}`)
+        }
+        else if (display === "0") {
+            setDisplay(value)
+        }
+        else {
+            setDisplay(`${display}${value}`)
+        }
     }
 
     // const [operation, setOperation] = useState<"add" | "subtract" | "multiply" | "divide" | undefined>(undefined)
@@ -69,11 +76,11 @@ export default function Home() {
 
 
     return (
-        <main className="flex min-h-screen flex-col items-center justify-between p-24">
-            <div className="h-auto max-w-6xl">
+        <main className="flex min-h-screen flex-col items-center justify-between">
+            <div className="h-screen w-screen flex flex-col">
                 {/* Display */}
-                <div className="w-full h-[16rem] border-b-2 border-solid border-gray-200 flex items-end justify-end text-right p-4">
-                    <p className={`${display.length < 5 ? "text-8xl" : "text-xl"} text-white text-right`}>{display}</p>
+                <div className="flex-1 w-full border-b-2 border-solid border-gray-200 flex items-end justify-end text-right py-12 px-4">
+                    <p className={`${display.length < 32 ? "text-8xl" : "text-xl"} text-white text-right font-mono`}>{display}</p>
                 </div>
 
                 <div className="w-full flex">
@@ -100,8 +107,8 @@ export default function Home() {
                     <button className="number-button" onClick={() => updateDisplay(".")}>.</button>
                     <button className="number-button" onClick={() => setDisplay(`${display} * `)}>*</button>
                 </div>
-                <button onClick={() => setDisplay(Math.round(eval(display.trim())).toString())} className="flex w-full bg-green-400 hover:bg-green-700 text-3xl px-4 py-2">
-                    Calculate
+                <button onClick={() => setDisplay(Math.round(eval(display.trim())).toString())} className="flex w-full bg-blue-700/50 hover:bg-blue-900/40 text-lg px-4 py-2 uppercase justify-between">
+                    <span className='text-3xl font-mono font-light'>Calculate</span> <span>=</span>
                 </button>
             </div>
         </main>
